@@ -1,0 +1,106 @@
+id: ai
+name: AI / Machine Learning
+description: AI/ML development server
+aliases: [ml, machine-learning]
+aliases_cli: [ai]
+
+sections:
+  - id: core
+    title: Core
+    components:
+      - id: git
+        packages: [git]
+      - id: curl
+        packages: [curl]
+      - id: build-essential
+        name: Build tools
+        packages: [build-essential]
+
+  - id: python
+    title: Python
+    depends_on: [core]
+    components:
+      - id: python3
+        name: Python 3
+        packages: [python3]
+      - id: uv
+        name: uv
+        kind: third_party
+        packages: [uv]
+        reversibility: partially_reversible
+
+  - id: containers
+    title: Containers
+    depends_on: [core]
+    components:
+      - id: docker
+        name: Docker
+        kind: third_party
+        packages: [docker]
+        services: [docker]
+        reversibility: partially_reversible
+      - id: docker-compose
+        name: Docker Compose
+        packages: [docker-compose]
+
+  - id: ai
+    title: AI
+    depends_on: [python, containers]
+    components:
+      - id: ollama
+        name: Ollama
+        kind: third_party
+        packages: [ollama]
+        services: [ollama]
+        reversibility: partially_reversible
+        notes: Lightweight CPU models are selected when no GPU is present.
+      - id: jupyter
+        name: Jupyter
+        kind: python
+        packages: [jupyter]
+      - id: huggingface-cli
+        name: Hugging Face tools
+        kind: python
+        packages: [huggingface-cli]
+      - id: pytorch-cpu
+        name: CPU PyTorch
+        kind: python
+        packages: []
+        condition:
+          not_gpu_vendor: nvidia
+        notes: CPU wheel is used when no NVIDIA GPU is present.
+
+  - id: nvidia
+    title: GPU
+    depends_on: [containers]
+    condition:
+      gpu_vendor: nvidia
+    min_ram_mb: 4096
+    components:
+      - id: nvidia-driver-check
+        name: NVIDIA driver validation
+        kind: check
+        packages: []
+        reversibility: reversible
+      - id: cuda-compat
+        name: CUDA compatibility checks
+        kind: check
+        packages: []
+      - id: nvidia-container-toolkit
+        name: NVIDIA Container Toolkit
+        kind: third_party
+        packages: [nvidia-container-toolkit]
+        reversibility: partially_reversible
+      - id: nvtop
+        name: GPU monitoring
+        packages: [nvtop]
+
+  - id: operations
+    title: Operations
+    components:
+      - id: htop
+        packages: [htop]
+      - id: tmux
+        packages: [tmux]
+      - id: jq
+        packages: [jq]

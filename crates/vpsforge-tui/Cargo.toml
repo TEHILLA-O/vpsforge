@@ -1,0 +1,13 @@
+[package]
+name = "vpsforge-tui"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Interactive ratatui console for VPSForge"
+
+[dependencies]
+crossterm.workspace = true
+ratatui.workspace = true
+vpsforge-core.workspace = true
+vpsforge-installer.workspace = true
+vpsforge-profiles.workspace = true

@@ -1,0 +1,14 @@
+/target
+**/*.rs.bk
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+*.pdb
+/dist
+/tmp
+.env
+.vpsforge/
+checkpoints/
+history.db

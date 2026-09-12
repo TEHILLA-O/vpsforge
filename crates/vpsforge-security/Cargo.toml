@@ -1,0 +1,13 @@
+[package]
+name = "vpsforge-security"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Defensive security auditing and hardening helpers"
+
+[dependencies]
+regex.workspace = true
+serde.workspace = true
+tracing.workspace = true
+vpsforge-core.workspace = true
+which.workspace = true

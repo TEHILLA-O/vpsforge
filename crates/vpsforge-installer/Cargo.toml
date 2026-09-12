@@ -1,0 +1,21 @@
+[package]
+name = "vpsforge-installer"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Plan builder, idempotent installer, and doctor checks"
+
+[dependencies]
+anyhow.workspace = true
+chrono.workspace = true
+indexmap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+vpsforge-core.workspace = true
+vpsforge-packages.workspace = true
+vpsforge-profiles.workspace = true
+which.workspace = true
+
+[dev-dependencies]
+vpsforge-detect.workspace = true

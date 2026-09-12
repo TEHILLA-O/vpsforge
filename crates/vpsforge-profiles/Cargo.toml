@@ -1,0 +1,16 @@
+[package]
+name = "vpsforge-profiles"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Server profiles, conditions, and dependency graphs"
+
+[dependencies]
+indexmap.workspace = true
+petgraph.workspace = true
+serde.workspace = true
+serde_yaml.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+vpsforge-core.workspace = true
+vpsforge-packages.workspace = true

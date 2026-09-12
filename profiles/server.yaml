@@ -1,0 +1,65 @@
+id: server
+name: Web / Application Server
+description: Web/application hosting
+aliases: [web, www]
+
+sections:
+  - id: core
+    title: Core
+    components:
+      - id: git
+        packages: [git]
+      - id: curl
+        packages: [curl]
+      - id: rsync
+        packages: [rsync]
+      - id: tmux
+        packages: [tmux]
+      - id: logrotate
+        packages: [logrotate]
+
+  - id: nginx
+    title: Nginx
+    optional: true
+    default: true
+    flag: nginx
+    components:
+      - id: nginx
+        packages: [nginx]
+        services: [nginx]
+        firewall_ports: ["80/tcp", "443/tcp"]
+
+  - id: caddy
+    title: Caddy
+    optional: true
+    default: false
+    flag: caddy
+    components:
+      - id: caddy
+        packages: [caddy]
+        services: [caddy]
+        firewall_ports: ["80/tcp", "443/tcp"]
+
+  - id: containers
+    title: Containers
+    components:
+      - id: docker
+        kind: third_party
+        packages: [docker]
+        services: [docker]
+      - id: podman
+        optional: true
+        default: false
+        packages: [podman]
+
+  - id: tls
+    title: Certificates
+    components:
+      - id: certbot
+        packages: [certbot]
+
+  - id: backups
+    title: Backup tools
+    components:
+      - id: restic
+        packages: [restic]

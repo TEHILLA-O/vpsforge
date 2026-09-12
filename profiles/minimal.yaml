@@ -1,0 +1,22 @@
+id: minimal
+name: Minimal useful VPS
+description: Minimal useful VPS
+aliases: []
+
+sections:
+  - id: core
+    title: Core
+    components:
+      - id: git
+        packages: [git]
+      - id: curl
+        packages: [curl]
+      - id: ca-certificates
+        packages: [ca-certificates]
+      - id: htop
+        packages: [htop]
+      - id: tmux
+        packages: [tmux]
+      - id: ufw
+        packages: [ufw]
+        firewall_ports: ["22/tcp"]

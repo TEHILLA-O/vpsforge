@@ -1,0 +1,47 @@
+id: devops
+name: DevOps / Containers
+description: Container/automation environment
+aliases: [containers, k8s]
+
+sections:
+  - id: core
+    title: Core
+    components:
+      - id: git
+        packages: [git]
+      - id: curl
+        packages: [curl]
+      - id: jq
+        packages: [jq]
+      - id: build-essential
+        name: Build tools
+        packages: [build-essential]
+
+  - id: containers
+    title: Container runtime
+    components:
+      - id: docker
+        kind: third_party
+        packages: [docker]
+        services: [docker]
+      - id: docker-compose
+        packages: [docker-compose]
+
+  - id: python
+    title: Automation
+    components:
+      - id: python3
+        packages: [python3]
+      - id: uv
+        kind: third_party
+        packages: [uv]
+
+  - id: ops
+    title: Operations
+    components:
+      - id: tmux
+        packages: [tmux]
+      - id: htop
+        packages: [htop]
+      - id: rsync
+        packages: [rsync]

@@ -1,0 +1,15 @@
+[package]
+name = "vpsforge-image"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Blueprint export to cloud-init, shell, and Packer"
+
+[dependencies]
+chrono.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde_yaml.workspace = true
+vpsforge-blueprint.workspace = true
+vpsforge-core.workspace = true
+vpsforge-profiles.workspace = true

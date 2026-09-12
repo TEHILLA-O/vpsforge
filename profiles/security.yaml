@@ -1,0 +1,72 @@
+id: security
+name: Security & Monitoring
+description: Defensive security/monitoring
+aliases: [sec, harden]
+
+sections:
+  - id: firewall
+    title: Firewall
+    components:
+      - id: ufw
+        name: Firewall configuration
+        packages: [ufw]
+        services: [ufw]
+        firewall_ports: ["22/tcp"]
+
+  - id: ssh
+    title: SSH hardening
+    components:
+      - id: ssh-harden
+        name: SSH hardening
+        kind: config
+        packages: []
+        notes: Disables password and root logins only after confirming a working key.
+
+  - id: ids
+    title: Intrusion prevention
+    components:
+      - id: fail2ban
+        packages: [fail2ban]
+        services: [fail2ban]
+      - id: crowdsec
+        name: CrowdSec
+        optional: true
+        default: false
+        flag: crowdsec
+        packages: [crowdsec]
+        services: [crowdsec]
+
+  - id: audit
+    title: Auditing
+    components:
+      - id: auditd
+        packages: [auditd]
+        services: [auditd]
+      - id: lynis
+        packages: [lynis]
+
+  - id: malware
+    title: Malware scanning
+    optional: true
+    default: false
+    flag: clamav
+    components:
+      - id: clamav
+        packages: [clamav]
+        services: [clamav-daemon]
+
+  - id: network
+    title: Network tooling
+    components:
+      - id: tcpdump
+        packages: [tcpdump]
+      - id: nmap
+        packages: [nmap]
+      - id: tshark
+        packages: [tshark]
+
+  - id: updates
+    title: Automatic security updates
+    components:
+      - id: unattended-upgrades
+        packages: [unattended-upgrades]

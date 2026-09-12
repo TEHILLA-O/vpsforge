@@ -1,0 +1,81 @@
+id: storage
+name: Data & Storage
+description: Databases and storage services
+aliases: [data, database, db]
+
+sections:
+  - id: core
+    title: Core
+    components:
+      - id: git
+        packages: [git]
+      - id: curl
+        packages: [curl]
+      - id: sqlite
+        name: SQLite tools
+        packages: [sqlite]
+
+  - id: postgres
+    title: PostgreSQL
+    optional: true
+    default: true
+    flag: postgres
+    components:
+      - id: postgresql
+        name: PostgreSQL
+        packages: [postgresql]
+        services: [postgresql]
+        firewall_ports: []
+        tune: postgres
+
+  - id: redis
+    title: Redis
+    optional: true
+    default: true
+    flag: redis
+    components:
+      - id: redis
+        packages: [redis]
+        services: [redis]
+        notes: Bound to localhost unless explicitly exposed.
+
+  - id: mariadb
+    title: MariaDB
+    optional: true
+    default: false
+    flag: mariadb
+    components:
+      - id: mariadb
+        packages: [mariadb]
+        services: [mariadb]
+
+  - id: mongodb
+    title: MongoDB
+    optional: true
+    default: false
+    flag: mongodb
+    components:
+      - id: mongodb
+        packages: [mongodb]
+        services: [mongod]
+
+  - id: minio
+    title: MinIO
+    optional: true
+    default: false
+    flag: minio
+    components:
+      - id: minio
+        name: MinIO
+        kind: third_party
+        packages: [minio]
+        services: [minio]
+        reversibility: partially_reversible
+
+  - id: backups
+    title: Backup utilities
+    components:
+      - id: restic
+        packages: [restic]
+      - id: rsync
+        packages: [rsync]

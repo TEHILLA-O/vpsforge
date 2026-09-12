@@ -1,0 +1,45 @@
+name: ai-production
+
+base:
+  family: debian
+
+requirements:
+  memory: ">=8GB"
+  architecture:
+    - amd64
+    - arm64
+
+profiles:
+  - production
+  - ai
+  - devops
+
+packages:
+  - git
+  - tmux
+  - jq
+
+services:
+  docker:
+    enabled: true
+  nginx:
+    enabled: true
+
+security:
+  ssh:
+    password_authentication: false
+    root_login: false
+  firewall:
+    enabled: true
+    ports:
+      - 22
+      - 80
+      - 443
+
+storage:
+  postgres: true
+  redis: true
+
+ai:
+  ollama: true
+  gpu: auto

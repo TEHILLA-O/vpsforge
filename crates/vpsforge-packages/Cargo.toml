@@ -1,0 +1,17 @@
+[package]
+name = "vpsforge-packages"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Package-manager abstraction and trusted third-party sources"
+
+[dependencies]
+anyhow.workspace = true
+hex.workspace = true
+indexmap.workspace = true
+serde.workspace = true
+sha2.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+vpsforge-core.workspace = true
+which.workspace = true

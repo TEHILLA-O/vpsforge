@@ -1,0 +1,39 @@
+id: production
+name: Minimal Production Server
+description: Hardened production baseline
+aliases: [prod]
+
+sections:
+  - id: core
+    title: Core
+    components:
+      - id: curl
+        packages: [curl]
+      - id: ca-certificates
+        packages: [ca-certificates]
+      - id: logrotate
+        packages: [logrotate]
+
+  - id: security
+    title: Baseline hardening
+    components:
+      - id: ufw
+        packages: [ufw]
+        services: [ufw]
+        firewall_ports: ["22/tcp"]
+      - id: fail2ban
+        packages: [fail2ban]
+        services: [fail2ban]
+      - id: unattended-upgrades
+        packages: [unattended-upgrades]
+      - id: ssh-harden
+        kind: config
+        packages: []
+
+  - id: ops
+    title: Operations
+    components:
+      - id: htop
+        packages: [htop]
+      - id: tmux
+        packages: [tmux]

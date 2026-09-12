@@ -1,0 +1,70 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/vpsforge-core",
+    "crates/vpsforge-detect",
+    "crates/vpsforge-packages",
+    "crates/vpsforge-profiles",
+    "crates/vpsforge-installer",
+    "crates/vpsforge-security",
+    "crates/vpsforge-blueprint",
+    "crates/vpsforge-checkpoint",
+    "crates/vpsforge-image",
+    "crates/vpsforge-tui",
+    "crates/vpsforge-cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/vpsforge/vpsforge"
+authors = ["VPSForge Contributors"]
+rust-version = "1.80"
+description = "Adaptive Linux VPS bootstrapper, toolkit manager, and server profile builder"
+
+[workspace.dependencies]
+vpsforge-core = { path = "crates/vpsforge-core" }
+vpsforge-detect = { path = "crates/vpsforge-detect" }
+vpsforge-packages = { path = "crates/vpsforge-packages" }
+vpsforge-profiles = { path = "crates/vpsforge-profiles" }
+vpsforge-installer = { path = "crates/vpsforge-installer" }
+vpsforge-security = { path = "crates/vpsforge-security" }
+vpsforge-blueprint = { path = "crates/vpsforge-blueprint" }
+vpsforge-checkpoint = { path = "crates/vpsforge-checkpoint" }
+vpsforge-image = { path = "crates/vpsforge-image" }
+vpsforge-tui = { path = "crates/vpsforge-tui" }
+
+anyhow = "1"
+chrono = { version = "0.4", features = ["serde", "clock"] }
+clap = { version = "4", features = ["derive", "env", "wrap_help", "color"] }
+clap_complete = "4"
+colored = "2"
+comfy-table = "7"
+crossterm = "0.28"
+dialoguer = "0.11"
+dirs = "6"
+hex = "0.4"
+hostname = "0.4"
+indexmap = { version = "2", features = ["serde"] }
+indicatif = "0.17"
+petgraph = "0.7"
+ratatui = "0.29"
+regex = "1"
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+sha2 = "0.10"
+sysinfo = "0.33"
+thiserror = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "process", "io-util", "fs", "time", "sync"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+which = "7"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "debuginfo"
+panic = "abort"
